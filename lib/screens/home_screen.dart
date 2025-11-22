@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/main.dart';
 import 'package:weather_app/screens/search_screen.dart';
 import 'package:weather_app/widgets/info_weather.dart';
 import 'package:weather_app/widgets/no_weather.dart';
@@ -14,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor:Theme.of(context).primaryColor,
         title:Text("Weather app",
             style: TextStyle(
               color: Colors.white,
@@ -41,10 +42,18 @@ class HomeScreen extends StatelessWidget {
             return NoWeather();
           }
           if( state is WeatherLoadedState){
-            return InfoWeather();
+            return InfoWeather(
+              weather:state.weatherModel);
           }
           else {
-            return Text("opps there was an error");
+            return Center(
+                child: Text("opps there was an error",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+            );
           }
         },
       )

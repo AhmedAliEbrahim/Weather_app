@@ -16,38 +16,49 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: Text("Search City",
-        style: TextStyle(
-          color: Colors.orange
-        ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Center(
-          child: TextField(
-            onSubmitted: (value) async {
-              var getweathercubit= BlocProvider.of<GetWeatherCubit>(context);
-              getweathercubit.getweather(value: value);
-               Navigator.pop(context);
-            },
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.blue,
+              Colors.white,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
 
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(vertical: 32,horizontal: 12),
-              label: Text("Search"),
-              hint: Text("Enter City Name",
-              style: TextStyle(
-                color: Colors.grey
-              ),
-              ),
-              suffix:Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.orange,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Center(
+            child: TextField(
+              onSubmitted: (value) async {
+                var getweathercubit= BlocProvider.of<GetWeatherCubit>(context);
+                getweathercubit.getweather(value: value);
+                 Navigator.pop(context);
+              },
+
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.symmetric(vertical: 32,horizontal: 12),
+                label: Text("Search"),
+                hint: Text("Enter City Name",
+                style: TextStyle(
+                  color: Colors.grey[300],
+                ),
+                ),
+                suffix:Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                  )
                 )
-              )
-            ),
-          )
+              ),
+            )
+          ),
         ),
       ),
     );

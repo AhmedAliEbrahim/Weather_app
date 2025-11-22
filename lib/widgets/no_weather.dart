@@ -6,18 +6,30 @@ class NoWeather extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child:  SizedBox(
-        height: 100,
-        width: double.infinity,
-        child: Center(
-          child: Text("there is no weather 😔 start searching now 🔍",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold
-          ),),
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Colors.blue,
+            Colors.white
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        )
       ),
-      );
+      child: Center(
+        child:  SizedBox(
+          height: 100,
+          width: double.infinity,
+          child: Center(
+            child: Text("there is no weather 😔 start searching now 🔍",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold
+            ),),
+          ),
+        ),
+        ),
+    );
   }
 }
